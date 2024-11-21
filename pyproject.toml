@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "fast_API"
+version = "0.1.0"
+description = ""
+authors = ["gustav0mirand4 <gustavo.mirandacmrr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.5"
+pytest = "^8.3.3"
+
+
+[tool.poetry.group.pytest.dependencies]
+pytest-cov = "^6.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.14.0"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+test = "pytest --cov=fast_api"
+run = "fastapi dev ./fast_api/main.py"
+pos_test = "coverage html"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
